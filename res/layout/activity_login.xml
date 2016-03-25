@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg" >
+
+    <LinearLayout
+        android:id="@+id/ll_inline_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bluetitlecolor" >
+
+        <ImageView
+            android:layout_width="45dip"
+            android:layout_height="45dip"
+            android:layout_marginLeft="17dp"
+            android:background="@drawable/click_color_selector"
+            android:clickable="true"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="10dip"
+            android:layout_marginLeft="20dip"
+            android:layout_marginTop="10dip"
+            android:text="登录"
+            android:textColor="@color/whitefont"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_inline_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dip"
+        android:src="@drawable/splash_logo" />
+
+    <TextView
+        android:id="@+id/tv_inline_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="使用微博账号登录"
+        android:textColor="@color/whitefont"
+        android:textSize="22sp" />
+
+    
+    <RelativeLayout
+        android:clickable="true"
+        android:id="@+id/rl_login_activity_sina"
+        android:layout_width="200dip"
+        android:layout_height="40dip"
+        android:layout_below="@id/tv_inline_login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dip"
+        android:background="@drawable/button_selector">
+
+        <ImageView
+            android:layout_marginLeft="45dip"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/xinlangweibo_36x35" />
+
+        <TextView
+           	android:layout_marginLeft="85dip"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新浪微博"
+            android:textSize="18sp" />
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_marginTop="10dip"
+        android:clickable="true"
+        android:id="@+id/rl_login_activity_qq"
+        android:layout_below="@id/rl_login_activity_sina"
+        android:layout_width="200dip"
+        android:layout_height="40dip"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_selector" >
+
+        <ImageView
+            android:layout_marginLeft="45dip"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/tengxunweibo_36x36" />
+
+        <TextView
+           	android:layout_marginLeft="85dip"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="腾讯微博"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

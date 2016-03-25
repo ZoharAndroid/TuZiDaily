@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <TextView
+        android:textColor="#ff000000"
+        android:paddingLeft="15dip"
+        android:gravity="center_vertical"
+        android:id="@+id/tv_popupwindow_nightmode"
+        android:layout_width="180dip"
+        android:layout_height="40dip"
+        android:background="@drawable/click_color_selector"
+        android:clickable="true"
+        android:text="夜间模式"
+        android:textSize="16sp" />
+
+    <TextView
+        android:textColor="#ff000000"
+        android:paddingLeft="15dip"
+        android:gravity="center_vertical"
+        android:id="@+id/tv_popupwindow_setting"
+        android:layout_width="180dip"
+        android:layout_height="40dip"
+        android:background="@drawable/click_color_selector"
+        android:clickable="true"
+        android:text="设置选项"
+        android:textSize="16sp" />
+
+</LinearLayout>

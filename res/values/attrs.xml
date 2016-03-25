@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name = "TitleColor" format = "reference|color"></attr>
+    <attr name="TextColor" format="reference|color" />
+    <attr name="BackgroundColor" format="reference|color" />
+    <attr name="LineColor" format="reference|color" />
+    <attr name="ActionbarColor" format="reference|color" />
+
+</resources>

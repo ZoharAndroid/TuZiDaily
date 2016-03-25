@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--蓝色： 标题 -->
+   <color name="bluetitlecolor">#00A2EF</color> 
+   <!--  灰色：点击效果 -->
+   <color name="dark">#ffA7C0DC</color>
+   <!-- 透明 -->
+   <color name="transparency">#00000000</color>
+   <!-- 白色  -->
+   <color name = "whitefont">#ffffffff</color>
+   
+   <!-- 黑色 -->
+   <color name = "blacktitle">#ff000000</color>
+</resources>
