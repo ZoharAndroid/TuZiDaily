@@ -39,6 +39,15 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
          */
         public static final int TitleColor=0x7f010000;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int colorPrimaryDark=0x7f010005;
     }
     public static final class color {
         /**  黑色 
@@ -50,6 +59,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /**   灰色：点击效果 
          */
         public static final int dark=0x7f040001;
+        /**  A dark Holo shade of blue 
+         */
+        public static final int holo_blue_dark=0x7f040005;
         /**  透明 
          */
         public static final int transparency=0x7f040002;
@@ -79,19 +91,20 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int xinlangweibo_36x35=0x7f020012;
     }
     public static final class id {
-        public static final int activity_splash_background=0x7f07000a;
+        public static final int activity_splash_background=0x7f07000b;
         public static final int iv_home_activity_login=0x7f070004;
         public static final int iv_home_activity_menu=0x7f070001;
         public static final int iv_home_activity_popupwindow=0x7f070003;
+        public static final int iv_login_activity_back=0x7f070007;
         public static final int ll_home_root=0x7f070000;
         public static final int ll_inline_title=0x7f070006;
         public static final int lv_home_activity_show=0x7f070005;
-        public static final int rl_login_activity_qq=0x7f070009;
-        public static final int rl_login_activity_sina=0x7f070008;
+        public static final int rl_login_activity_qq=0x7f07000a;
+        public static final int rl_login_activity_sina=0x7f070009;
         public static final int tv_home_activity_title=0x7f070002;
-        public static final int tv_inline_login=0x7f070007;
-        public static final int tv_popupwindow_nightmode=0x7f07000b;
-        public static final int tv_popupwindow_setting=0x7f07000c;
+        public static final int tv_inline_login=0x7f070008;
+        public static final int tv_popupwindow_nightmode=0x7f07000c;
+        public static final int tv_popupwindow_setting=0x7f07000d;
     }
     public static final class layout {
         public static final int activity_home=0x7f030000;
@@ -101,17 +114,26 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class string {
         public static final int app_name=0x7f050000;
+        public static final int weibosdk_demo_toast_auth_canceled=0x7f050003;
+        public static final int weibosdk_demo_toast_auth_failed=0x7f050002;
+        public static final int weibosdk_demo_toast_auth_success=0x7f050001;
+        public static final int weibosdk_demo_token_has_existed=0x7f050005;
+        public static final int weibosdk_demo_token_to_string_format_1=0x7f050004;
     }
     public static final class style {
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
 
+
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
+
 
         
 

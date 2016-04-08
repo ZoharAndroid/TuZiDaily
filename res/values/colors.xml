@@ -11,4 +11,7 @@
    
    <!-- 黑色 -->
    <color name = "blacktitle">#ff000000</color>
+   
+     <!-- A dark Holo shade of blue -->
+    <color name="holo_blue_dark">#ff0099cc</color>
 </resources>

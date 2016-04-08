@@ -6,5 +6,7 @@
     <attr name="BackgroundColor" format="reference|color" />
     <attr name="LineColor" format="reference|color" />
     <attr name="ActionbarColor" format="reference|color" />
-
+    
+	<attr name="colorPrimaryDark" format="color" />
+	
 </resources>
