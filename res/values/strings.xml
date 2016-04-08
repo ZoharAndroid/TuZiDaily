@@ -1,9 +1,16 @@
 <resources>
 
     <string name="app_name">兔子日报TuZi</string>
-	<string name="weibosdk_demo_toast_auth_success">授权成功</string>
-	<string name="weibosdk_demo_toast_auth_failed">授权失败</string>
-	<string name="weibosdk_demo_toast_auth_canceled">取消授权</string>
-	<string name="weibosdk_demo_token_to_string_format_1">Token：%1$s \n有效期：%2$s</string>
-	<string name="weibosdk_demo_token_has_existed">Token 仍在有效期内，无需再次登录。</string>
+    <string name="weibosdk_demo_toast_auth_success">授权成功</string>
+    <string name="weibosdk_demo_toast_auth_failed">授权失败</string>
+    <string name="weibosdk_demo_toast_auth_canceled">取消授权</string>
+    <string name="weibosdk_demo_token_to_string_format_1">Token：%1$s \n有效期：%2$s</string>
+    <string name="weibosdk_demo_token_has_existed">Token 仍在有效期内，无需再次登录。</string>
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">正在加载...</string>
+    <string name="xlistview_header_last_time">上次更新时间：</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+
 </resources>

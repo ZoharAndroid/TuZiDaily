@@ -53,10 +53,10 @@ containing a value of this type.
         /**  黑色 
          */
         public static final int blacktitle=0x7f040004;
-        /** 蓝色： 标题 
+        /**  蓝色： 标题 
          */
         public static final int bluetitlecolor=0x7f040000;
-        /**   灰色：点击效果 
+        /**  灰色：点击效果 
          */
         public static final int dark=0x7f040001;
         /**  A dark Holo shade of blue 
@@ -65,52 +65,93 @@ containing a value of this type.
         /**  透明 
          */
         public static final int transparency=0x7f040002;
-        /**  白色  
+        /**  白色 
          */
         public static final int whitefont=0x7f040003;
     }
     public static final class drawable {
-        public static final int abc_ic_menu_moreoverflow_mtrl_alpha=0x7f020000;
-        public static final int abc_popup_background_mtrl_mult=0x7f020001;
-        public static final int back=0x7f020002;
-        public static final int button_selector=0x7f020003;
-        public static final int click_color_selector=0x7f020004;
-        public static final int comment_share_sina=0x7f020005;
-        public static final int comment_share_tencent=0x7f020006;
-        public static final int ic_launcher=0x7f020007;
-        public static final int ic_menu=0x7f020008;
-        public static final int iconfont_button170x45=0x7f020009;
-        public static final int iconfontbutton170x30=0x7f02000a;
-        public static final int login_bg=0x7f02000b;
-        public static final int message=0x7f02000c;
-        public static final int preed_button170x45=0x7f02000d;
-        public static final int preedbutton170x30=0x7f02000e;
-        public static final int splash=0x7f02000f;
-        public static final int splash_logo=0x7f020010;
-        public static final int tengxunweibo_36x36=0x7f020011;
-        public static final int xinlangweibo_36x35=0x7f020012;
+        public static final int abc_btn_check_to_on_mtrl_000=0x7f020000;
+        public static final int abc_btn_check_to_on_mtrl_015=0x7f020001;
+        public static final int abc_ic_menu_moreoverflow_mtrl_alpha=0x7f020002;
+        public static final int abc_popup_background_mtrl_mult=0x7f020003;
+        public static final int back=0x7f020004;
+        public static final int biz_news_local_weather_bg_big=0x7f020005;
+        public static final int biz_pc_account_line=0x7f020006;
+        public static final int button_selector=0x7f020007;
+        public static final int click_color_selector=0x7f020008;
+        public static final int comment_share_sina=0x7f020009;
+        public static final int comment_share_tencent=0x7f02000a;
+        public static final int ic_launcher=0x7f02000b;
+        public static final int ic_menu=0x7f02000c;
+        public static final int iconfont_button170x45=0x7f02000d;
+        public static final int iconfontbutton170x30=0x7f02000e;
+        public static final int login_bg=0x7f02000f;
+        public static final int menu_avatar=0x7f020010;
+        public static final int message=0x7f020011;
+        public static final int preed_button170x45=0x7f020012;
+        public static final int preedbutton170x30=0x7f020013;
+        public static final int splash=0x7f020014;
+        public static final int splash_logo=0x7f020015;
+        public static final int tengxunweibo_36x36=0x7f020016;
+        public static final int xinlangweibo_36x35=0x7f020017;
+        public static final int xlistview_arrow=0x7f020018;
     }
     public static final class id {
-        public static final int activity_splash_background=0x7f07000b;
+        public static final int activity_splash_background=0x7f070017;
         public static final int iv_home_activity_login=0x7f070004;
         public static final int iv_home_activity_menu=0x7f070001;
         public static final int iv_home_activity_popupwindow=0x7f070003;
         public static final int iv_login_activity_back=0x7f070007;
+        public static final int iv_setting_activity_back=0x7f07000b;
+        public static final int list_item_textview=0x7f07001f;
         public static final int ll_home_root=0x7f070000;
         public static final int ll_inline_title=0x7f070006;
         public static final int lv_home_activity_show=0x7f070005;
+        public static final int profile_image=0x7f070018;
         public static final int rl_login_activity_qq=0x7f07000a;
         public static final int rl_login_activity_sina=0x7f070009;
+        public static final int rl_setting_autoload=0x7f07000c;
+        public static final int rl_setting_bigfont=0x7f070010;
+        public static final int rl_setting_checkupdata=0x7f070014;
+        public static final int rl_setting_noimagemode=0x7f07000e;
+        public static final int rl_setting_sendmessage=0x7f070011;
+        public static final int rl_setting_shareweibo=0x7f070012;
+        public static final int tvDiscussMeeting=0x7f07001b;
+        public static final int tvLastlist=0x7f07001a;
+        public static final int tvMyComments=0x7f07001d;
+        public static final int tvMyFavorites=0x7f07001c;
+        public static final int tvMySettings=0x7f07001e;
+        public static final int tvToday=0x7f070019;
         public static final int tv_home_activity_title=0x7f070002;
         public static final int tv_inline_login=0x7f070008;
-        public static final int tv_popupwindow_nightmode=0x7f07000c;
-        public static final int tv_popupwindow_setting=0x7f07000d;
+        public static final int tv_popupwindow_nightmode=0x7f070020;
+        public static final int tv_popupwindow_setting=0x7f070021;
+        public static final int tv_setting_autoload=0x7f07000d;
+        public static final int tv_setting_checkupdata=0x7f070015;
+        public static final int tv_setting_clearcache=0x7f070013;
+        public static final int tv_setting_noimage=0x7f07000f;
+        public static final int tv_setting_suggestion=0x7f070016;
+        public static final int xlistview_footer_content=0x7f070022;
+        public static final int xlistview_footer_hint_textview=0x7f070024;
+        public static final int xlistview_footer_progressbar=0x7f070023;
+        public static final int xlistview_header_arrow=0x7f070029;
+        public static final int xlistview_header_content=0x7f070025;
+        public static final int xlistview_header_hint_textview=0x7f070027;
+        public static final int xlistview_header_progressbar=0x7f07002a;
+        public static final int xlistview_header_text=0x7f070026;
+        public static final int xlistview_header_time=0x7f070028;
     }
     public static final class layout {
         public static final int activity_home=0x7f030000;
         public static final int activity_login=0x7f030001;
-        public static final int activity_splash=0x7f030002;
-        public static final int popupwindow_home=0x7f030003;
+        public static final int activity_setting=0x7f030002;
+        public static final int activity_splash=0x7f030003;
+        public static final int item_xlistvew_home_show=0x7f030004;
+        public static final int layout_menu=0x7f030005;
+        public static final int list_item=0x7f030006;
+        public static final int popupwindow_home=0x7f030007;
+        public static final int xlistview_footer=0x7f030008;
+        public static final int xlistview_header=0x7f030009;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
@@ -119,6 +160,12 @@ containing a value of this type.
         public static final int weibosdk_demo_toast_auth_success=0x7f050001;
         public static final int weibosdk_demo_token_has_existed=0x7f050005;
         public static final int weibosdk_demo_token_to_string_format_1=0x7f050004;
+        public static final int xlistview_footer_hint_normal=0x7f05000a;
+        public static final int xlistview_footer_hint_ready=0x7f05000b;
+        public static final int xlistview_header_hint_loading=0x7f050008;
+        public static final int xlistview_header_hint_normal=0x7f050006;
+        public static final int xlistview_header_hint_ready=0x7f050007;
+        public static final int xlistview_header_last_time=0x7f050009;
     }
     public static final class style {
         /** 
@@ -127,13 +174,12 @@ containing a value of this type.
 
 
 
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
-
-
 
         
 

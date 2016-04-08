@@ -1,21 +1,26 @@
 package com.zzh.tuzidaily.activity;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.zzh.tuzidaily.R;
+import com.zzh.tuzidaily.view.XListView;
+import com.zzh.tuzidaily.view.XListView.IXListViewListener;
 
 /**
  * 主界面显示
@@ -23,7 +28,7 @@ import com.zzh.tuzidaily.R;
  * @author zohar
  * @date 2016年3月24日
  * @version 1.0
- *
+ * 
  */
 public class HomeActivity extends Activity {
 	private ImageView iv_menu;
@@ -32,13 +37,87 @@ public class HomeActivity extends Activity {
 	private ImageView iv_popupwindow;
 	private PopupWindow popWin;
 	private LinearLayout ll_root;
-	private ListView lv_show;
+	private XListView xlv_show;
+
+	private ArrayList<String> items = new ArrayList<String>();
+	private int start = 0;
+	private int refreshCnt = 0;
+	
+	private ArrayAdapter<String> mAdapter;
+	private Handler mHandler;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		initView();
+		initData();
 		initClickEvent();
+	}
+
+	private void initData() {
+		// 获取条目
+		getItems();
+		// 设置XListView中的参数
+		xlv_show.setPullLoadEnable(true);
+		mAdapter = new ArrayAdapter<String>(this,
+				R.layout.list_item, items);
+		xlv_show.setAdapter(mAdapter);
+		mHandler = new Handler();
+		// 设置xlistview的监听效果
+		xlv_show.setXListViewListener(new IXListViewListener() {
+			/**
+			 * 下拉刷新
+			 */
+			@Override
+			public void onRefresh() {
+				mHandler.postDelayed(new Runnable() {
+
+					@Override
+					public void run() {
+						start = ++refreshCnt;
+						items.clear();
+						getItems();
+						// mAdapter.notifyDataSetChanged();
+						mAdapter = new ArrayAdapter<String>(HomeActivity.this,
+								R.layout.list_item, items);
+						xlv_show.setAdapter(mAdapter);
+						onLoad();
+					}
+				}, 2000);
+			}
+
+			/**
+			 * 上拉：加载更多
+			 */
+			@Override
+			public void onLoadMore() {
+				mHandler.postDelayed(new Runnable() {
+
+					@Override
+					public void run() {
+						getItems();
+						mAdapter.notifyDataSetChanged();
+						onLoad();
+					}
+				}, 2000);
+			}
+		});
+
+	}
+
+	private void onLoad() {
+		xlv_show.stopRefresh();
+		xlv_show.stopLoadMore();
+		xlv_show.setRefreshTime("刚刚");
+	}
+
+	/**
+	 * 获得显示的条目
+	 */
+	private void getItems() {
+		for (int i = 0; i != 20; ++i) {
+			items.add("refresh cnt " + (++start));
+		}
 	}
 
 	/**
@@ -46,131 +125,137 @@ public class HomeActivity extends Activity {
 	 */
 	private void initClickEvent() {
 		ll_root.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				
+
 			}
 		});
-		
+
 		/**
 		 * 图标：点击出现菜单的选项
 		 */
 		iv_menu.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-		
+
 		/**
 		 * 图标：点击注册
 		 */
 		iv_login.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+				Intent intent = new Intent(HomeActivity.this,
+						LoginActivity.class);
 				startActivity(intent);
 			}
 		});
-		 
+
 		/**
 		 * 图标：点击显示popupwindow
 		 */
 		iv_popupwindow.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				popWinSet(v);
 			}
 		});
 	}
-	
+
 	/**
 	 * popupwindow显示设置
 	 * 
 	 * @param v
 	 */
 	private void popWinSet(View v) {
-		
-		View view = View.inflate(HomeActivity.this, R.layout.popupwindow_home, null);
-		final TextView tv_nightmode = (TextView) view.findViewById(R.id.tv_popupwindow_nightmode);
-		TextView tv_setting = (TextView) view.findViewById(R.id.tv_popupwindow_setting);
-		
-		if(popWin == null){
+
+		View view = View.inflate(HomeActivity.this, R.layout.popupwindow_home,
+				null);
+		final TextView tv_nightmode = (TextView) view
+				.findViewById(R.id.tv_popupwindow_nightmode);
+		TextView tv_setting = (TextView) view
+				.findViewById(R.id.tv_popupwindow_setting);
+
+		if (popWin == null) {
 			popWin = new PopupWindow(view, -2, -2);
-			popWin.setOutsideTouchable(true);//点击其他的地方就会消除这个popupwindow
+			popWin.setOutsideTouchable(true);// 点击其他的地方就会消除这个popupwindow
 			popWin.setFocusable(true);
 			popWin.setTouchable(true);
 			popWin.setBackgroundDrawable(new BitmapDrawable(getResources()));
 			view.setOnTouchListener(new OnTouchListener() {
-				
+
 				@Override
 				public boolean onTouch(View v, MotionEvent event) {
-					if(popWin.isShowing()){
+					if (popWin.isShowing()) {
 						popWin.dismiss();
 					}
 					return false;
 				}
 			});
 		}
-		if(popWin.isShowing()){
+		if (popWin.isShowing()) {
 			popWin.dismiss();
-		}else{
+		} else {
 			popWin.showAsDropDown(v, 1, 0);
 		}
-		
+
 		/**
 		 * popupwindow中的白天/夜间模式
 		 */
 		tv_nightmode.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				//首先关闭popupwindow
+				// 首先关闭popupwindow
 				closePopWin();
 				tv_nightmode.setText("日间模式");
-				
-				
+
 			}
 		});
 		/**
 		 * popupwindow中的设置选项
 		 */
 		tv_setting.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				//首先关闭popupwindow
+				// 首先关闭popupwindow
 				closePopWin();
-				
+				//进入设置界面
+				Intent mIntentSetting = new Intent(HomeActivity.this, SettingActivity.class);
+				startActivity(mIntentSetting);
 			}
 		});
 	}
-	
+
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
 		closePopWin();
 	}
+
 	@Override
 	protected void onPause() {
 		super.onPause();
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
 	}
-	
+
 	/**
 	 * 关闭popupwindow
 	 */
-	private void closePopWin(){
-		if(popWin != null &&  popWin.isShowing()){
+	private void closePopWin() {
+		if (popWin != null && popWin.isShowing()) {
 			popWin.dismiss();
 			popWin = null;
 		}
@@ -187,6 +272,6 @@ public class HomeActivity extends Activity {
 		iv_menu = (ImageView) findViewById(R.id.iv_home_activity_menu);
 		iv_popupwindow = (ImageView) findViewById(R.id.iv_home_activity_popupwindow);
 		ll_root = (LinearLayout) findViewById(R.id.ll_home_root);
-		lv_show = (ListView) findViewById(R.id.lv_home_activity_show);
+		xlv_show = (XListView) findViewById(R.id.lv_home_activity_show);
 	}
 }
