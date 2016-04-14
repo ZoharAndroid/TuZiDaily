@@ -48,6 +48,16 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int colorPrimaryDark=0x7f010005;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int rightPadding=0x7f010006;
     }
     public static final class color {
         /**  黑色 
@@ -72,74 +82,97 @@ containing a value of this type.
     public static final class drawable {
         public static final int abc_btn_check_to_on_mtrl_000=0x7f020000;
         public static final int abc_btn_check_to_on_mtrl_015=0x7f020001;
-        public static final int abc_ic_menu_moreoverflow_mtrl_alpha=0x7f020002;
-        public static final int abc_popup_background_mtrl_mult=0x7f020003;
-        public static final int back=0x7f020004;
-        public static final int biz_news_local_weather_bg_big=0x7f020005;
-        public static final int biz_pc_account_line=0x7f020006;
-        public static final int button_selector=0x7f020007;
-        public static final int click_color_selector=0x7f020008;
-        public static final int comment_share_sina=0x7f020009;
-        public static final int comment_share_tencent=0x7f02000a;
-        public static final int ic_launcher=0x7f02000b;
-        public static final int ic_menu=0x7f02000c;
-        public static final int iconfont_button170x45=0x7f02000d;
-        public static final int iconfontbutton170x30=0x7f02000e;
-        public static final int login_bg=0x7f02000f;
-        public static final int menu_avatar=0x7f020010;
-        public static final int message=0x7f020011;
-        public static final int preed_button170x45=0x7f020012;
-        public static final int preedbutton170x30=0x7f020013;
-        public static final int splash=0x7f020014;
-        public static final int splash_logo=0x7f020015;
-        public static final int tengxunweibo_36x36=0x7f020016;
-        public static final int xinlangweibo_36x35=0x7f020017;
-        public static final int xlistview_arrow=0x7f020018;
+        public static final int abc_btn_rating_star_on_mtrl_alpha=0x7f020002;
+        public static final int abc_ic_menu_moreoverflow_mtrl_alpha=0x7f020003;
+        public static final int abc_popup_background_mtrl_mult=0x7f020004;
+        public static final int back=0x7f020005;
+        public static final int biz_news_local_weather_bg_big=0x7f020006;
+        public static final int biz_pc_account_line=0x7f020007;
+        public static final int button_selector=0x7f020008;
+        public static final int click_color_selector=0x7f020009;
+        public static final int comment_share_sina=0x7f02000a;
+        public static final int comment_share_tencent=0x7f02000b;
+        public static final int downlaod_menu=0x7f02000c;
+        public static final int ic_launcher=0x7f02000d;
+        public static final int ic_menu=0x7f02000e;
+        public static final int iconfont_button170x45=0x7f02000f;
+        public static final int iconfontbutton170x30=0x7f020010;
+        public static final int login_bg=0x7f020011;
+        public static final int menu_addicon_selector=0x7f020012;
+        public static final int menu_arrow=0x7f020013;
+        public static final int menu_avatar=0x7f020014;
+        public static final int menu_day_highlight=0x7f020015;
+        public static final int menu_download=0x7f020016;
+        public static final int menu_download_highlight=0x7f020017;
+        public static final int menu_follow=0x7f020018;
+        public static final int menu_follow_highlight=0x7f020019;
+        public static final int menu_home=0x7f02001a;
+        public static final int menu_night=0x7f02001b;
+        public static final int menu_night_highlight=0x7f02001c;
+        public static final int message=0x7f02001d;
+        public static final int preed_button170x45=0x7f02001e;
+        public static final int preedbutton170x30=0x7f02001f;
+        public static final int splash=0x7f020020;
+        public static final int splash_logo=0x7f020021;
+        public static final int tengxunweibo_36x36=0x7f020022;
+        public static final int theme_add=0x7f020023;
+        public static final int xinlangweibo_36x35=0x7f020024;
+        public static final int xlistview_arrow=0x7f020025;
     }
     public static final class id {
-        public static final int activity_splash_background=0x7f070017;
-        public static final int iv_home_activity_login=0x7f070004;
-        public static final int iv_home_activity_menu=0x7f070001;
-        public static final int iv_home_activity_popupwindow=0x7f070003;
-        public static final int iv_login_activity_back=0x7f070007;
-        public static final int iv_setting_activity_back=0x7f07000b;
-        public static final int list_item_textview=0x7f07001f;
-        public static final int ll_home_root=0x7f070000;
-        public static final int ll_inline_title=0x7f070006;
-        public static final int lv_home_activity_show=0x7f070005;
-        public static final int profile_image=0x7f070018;
-        public static final int rl_login_activity_qq=0x7f07000a;
-        public static final int rl_login_activity_sina=0x7f070009;
-        public static final int rl_setting_autoload=0x7f07000c;
-        public static final int rl_setting_bigfont=0x7f070010;
-        public static final int rl_setting_checkupdata=0x7f070014;
-        public static final int rl_setting_noimagemode=0x7f07000e;
-        public static final int rl_setting_sendmessage=0x7f070011;
-        public static final int rl_setting_shareweibo=0x7f070012;
-        public static final int tvDiscussMeeting=0x7f07001b;
-        public static final int tvLastlist=0x7f07001a;
-        public static final int tvMyComments=0x7f07001d;
-        public static final int tvMyFavorites=0x7f07001c;
-        public static final int tvMySettings=0x7f07001e;
-        public static final int tvToday=0x7f070019;
-        public static final int tv_home_activity_title=0x7f070002;
-        public static final int tv_inline_login=0x7f070008;
-        public static final int tv_popupwindow_nightmode=0x7f070020;
-        public static final int tv_popupwindow_setting=0x7f070021;
-        public static final int tv_setting_autoload=0x7f07000d;
-        public static final int tv_setting_checkupdata=0x7f070015;
-        public static final int tv_setting_clearcache=0x7f070013;
-        public static final int tv_setting_noimage=0x7f07000f;
-        public static final int tv_setting_suggestion=0x7f070016;
-        public static final int xlistview_footer_content=0x7f070022;
-        public static final int xlistview_footer_hint_textview=0x7f070024;
-        public static final int xlistview_footer_progressbar=0x7f070023;
-        public static final int xlistview_header_arrow=0x7f070029;
-        public static final int xlistview_header_content=0x7f070025;
-        public static final int xlistview_header_hint_textview=0x7f070027;
-        public static final int xlistview_header_progressbar=0x7f07002a;
-        public static final int xlistview_header_text=0x7f070026;
-        public static final int xlistview_header_time=0x7f070028;
+        public static final int activity_splash_background=0x7f070019;
+        public static final int iv_home_activity_login=0x7f070006;
+        public static final int iv_home_activity_menu=0x7f070003;
+        public static final int iv_home_activity_popupwindow=0x7f070005;
+        public static final int iv_login_activity_back=0x7f070009;
+        public static final int iv_setting_activity_back=0x7f07000d;
+        public static final int list_item_textview=0x7f070029;
+        public static final int ll_home_root=0x7f070001;
+        public static final int ll_inline_title=0x7f070008;
+        public static final int ll_menu_item_first=0x7f07001c;
+        public static final int lv_home_activity_show=0x7f070007;
+        public static final int profile_image=0x7f07001b;
+        public static final int rl_home_activity_title=0x7f070002;
+        public static final int rl_login_activity_qq=0x7f07000c;
+        public static final int rl_login_activity_sina=0x7f07000b;
+        public static final int rl_menu_login=0x7f07001a;
+        public static final int rl_setting_autoload=0x7f07000e;
+        public static final int rl_setting_bigfont=0x7f070012;
+        public static final int rl_setting_checkupdata=0x7f070016;
+        public static final int rl_setting_noimagemode=0x7f070010;
+        public static final int rl_setting_sendmessage=0x7f070013;
+        public static final int rl_setting_shareweibo=0x7f070014;
+        public static final int slidingmenu_home_activity=0x7f070000;
+        public static final int tv_home_activity_title=0x7f070004;
+        public static final int tv_inline_login=0x7f07000a;
+        public static final int tv_menu_item_begingrame=0x7f070025;
+        public static final int tv_menu_item_bigcorporation=0x7f070022;
+        public static final int tv_menu_item_cartoon=0x7f070027;
+        public static final int tv_menu_item_design=0x7f070021;
+        public static final int tv_menu_item_finance=0x7f070023;
+        public static final int tv_menu_item_internetsafe=0x7f070024;
+        public static final int tv_menu_item_movie=0x7f07001f;
+        public static final int tv_menu_item_music=0x7f070026;
+        public static final int tv_menu_item_nobored=0x7f070020;
+        public static final int tv_menu_item_psycology =0x7f07001d;
+        public static final int tv_menu_item_sport=0x7f070028;
+        public static final int tv_menu_item_usersuggestion=0x7f07001e;
+        public static final int tv_popupwindow_nightmode=0x7f07002a;
+        public static final int tv_popupwindow_setting=0x7f07002b;
+        public static final int tv_setting_autoload=0x7f07000f;
+        public static final int tv_setting_checkupdata=0x7f070017;
+        public static final int tv_setting_clearcache=0x7f070015;
+        public static final int tv_setting_noimage=0x7f070011;
+        public static final int tv_setting_suggestion=0x7f070018;
+        public static final int xlistview_footer_content=0x7f07002c;
+        public static final int xlistview_footer_hint_textview=0x7f07002e;
+        public static final int xlistview_footer_progressbar=0x7f07002d;
+        public static final int xlistview_header_arrow=0x7f070033;
+        public static final int xlistview_header_content=0x7f07002f;
+        public static final int xlistview_header_hint_textview=0x7f070031;
+        public static final int xlistview_header_progressbar=0x7f070034;
+        public static final int xlistview_header_text=0x7f070030;
+        public static final int xlistview_header_time=0x7f070032;
     }
     public static final class layout {
         public static final int activity_home=0x7f030000;
@@ -205,4 +238,35 @@ containing a value of this type.
         public static final int DayTheme=0x7f060002;
         public static final int NightTheme=0x7f060003;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a SlidingMenu.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #SlidingMenu_rightPadding com.zzh.tuzidaily:rightPadding}</code></td><td></td></tr>
+           </table>
+           @see #SlidingMenu_rightPadding
+         */
+        public static final int[] SlidingMenu = {
+            0x7f010006
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.zzh.tuzidaily.R.attr#rightPadding}
+          attribute's value can be found in the {@link #SlidingMenu} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.zzh.tuzidaily:rightPadding
+        */
+        public static final int SlidingMenu_rightPadding = 0;
+    };
 }

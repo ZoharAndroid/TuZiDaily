@@ -16,9 +16,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.zzh.tuzidaily.R;
+import com.zzh.tuzidaily.SlidingMenu.SlidingMenu;
 import com.zzh.tuzidaily.view.XListView;
 import com.zzh.tuzidaily.view.XListView.IXListViewListener;
 
@@ -42,9 +44,26 @@ public class HomeActivity extends Activity {
 	private ArrayList<String> items = new ArrayList<String>();
 	private int start = 0;
 	private int refreshCnt = 0;
-	
+
 	private ArrayAdapter<String> mAdapter;
 	private Handler mHandler;
+
+	private SlidingMenu mSlidingMenu;
+	private RelativeLayout rl_menu_login;
+	private TextView tv_psycology;
+	private TextView tv_usersuggestion;
+	private TextView tv_movie;
+	private TextView tv_nobored;
+	private TextView tv_design;
+	private TextView tv_bigcorporation;
+	private TextView tv_finance;
+	private TextView tv_internetsafe;
+	private TextView tv_begingrame;
+	private TextView tv_music;
+	private TextView tv_cartoon;
+	private TextView tv_sport;
+	private RelativeLayout rl_title;
+	private LinearLayout ll_first;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +78,7 @@ public class HomeActivity extends Activity {
 		getItems();
 		// 设置XListView中的参数
 		xlv_show.setPullLoadEnable(true);
-		mAdapter = new ArrayAdapter<String>(this,
-				R.layout.list_item, items);
+		mAdapter = new ArrayAdapter<String>(this, R.layout.list_item, items);
 		xlv_show.setAdapter(mAdapter);
 		mHandler = new Handler();
 		// 设置xlistview的监听效果
@@ -139,8 +157,8 @@ public class HomeActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
+				// 点击打开侧滑菜单
+				mSlidingMenu.toggle();
 			}
 		});
 
@@ -167,6 +185,161 @@ public class HomeActivity extends Activity {
 				popWinSet(v);
 			}
 		});
+
+		/**
+		 * 菜单栏的登录按钮
+		 */
+		rl_menu_login.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(HomeActivity.this,
+						LoginActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		/**
+		 * 点击侧滑菜单栏的首页选项
+		 */
+		ll_first.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				setClickMenuTitleToFirst("首页");
+			}
+		});
+
+		/**
+		 * 侧滑菜单栏：日常心理学
+		 */
+		tv_psycology.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				setClickMenuTitle("日常心理学");
+			}
+		});
+
+		tv_usersuggestion.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				setClickMenuTitle("用户推荐日报");
+			}
+		});
+
+		tv_movie.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				setClickMenuTitle("电影日报");
+			}
+		});
+
+		tv_nobored.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				setClickMenuTitle("不准无聊");
+			}
+		});
+
+		tv_bigcorporation.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				setClickMenuTitle("大公司日报");
+			}
+		});
+
+		tv_finance.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				setClickMenuTitle("财经日报");
+			}
+		});
+
+		tv_internetsafe.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				setClickMenuTitle("互联网安全");
+			}
+		});
+
+		tv_begingrame.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				setClickMenuTitle("开始游戏");
+			}
+		});
+
+		tv_cartoon.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				setClickMenuTitle("动漫日报");
+			}
+		});
+		
+		tv_music.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				setClickMenuTitle("音乐日报");
+			}
+		});
+		
+		tv_sport.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				setClickMenuTitle("体育日报");
+			}
+		});
+	}
+
+	/**
+	 * 点击侧滑菜单栏中的条目信息重新出现到主界面中
+	 * 
+	 * @param name
+	 */
+	private void setClickMenuTitle(String name) {
+		// 关闭侧滑菜单栏
+		mSlidingMenu.closeMenu();
+		tv_title.setText(name);
+		iv_login.setVisibility(View.INVISIBLE);
+		//iv_popupwindow.setVisibility(View.GONE);
+		// rl_title.addView(ImageView.inflate(HomeActivity.this,
+		// R.drawable.theme_add, null));
+		iv_popupwindow.setImageResource(R.drawable.theme_add);
+		refreshCnt = 0;
+		start = 0;
+		items.clear();
+		mAdapter.notifyDataSetChanged();
+		initData();
+	}
+
+	/**
+	 * 点击侧滑菜单栏中的条目信息重新出现到主界面中首页
+	 * 
+	 * @param name
+	 */
+	private void setClickMenuTitleToFirst(String name) {
+		// 关闭侧滑菜单栏
+		mSlidingMenu.closeMenu();
+		tv_title.setText(name);
+		iv_login.setVisibility(View.VISIBLE);
+		//iv_popupwindow.setVisibility(View.GONE);
+		iv_popupwindow.setImageResource(R.drawable.abc_ic_menu_moreoverflow_mtrl_alpha);
+		refreshCnt = 0;
+		start = 0;
+		items.clear();
+		mAdapter.notifyDataSetChanged();
+		initData();
 	}
 
 	/**
@@ -228,8 +401,9 @@ public class HomeActivity extends Activity {
 			public void onClick(View v) {
 				// 首先关闭popupwindow
 				closePopWin();
-				//进入设置界面
-				Intent mIntentSetting = new Intent(HomeActivity.this, SettingActivity.class);
+				// 进入设置界面
+				Intent mIntentSetting = new Intent(HomeActivity.this,
+						SettingActivity.class);
 				startActivity(mIntentSetting);
 			}
 		});
@@ -267,11 +441,30 @@ public class HomeActivity extends Activity {
 	private void initView() {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_home);
+		mSlidingMenu = (SlidingMenu) findViewById(R.id.slidingmenu_home_activity);
 		iv_login = (ImageView) findViewById(R.id.iv_home_activity_login);
 		tv_title = (TextView) findViewById(R.id.tv_home_activity_title);
 		iv_menu = (ImageView) findViewById(R.id.iv_home_activity_menu);
 		iv_popupwindow = (ImageView) findViewById(R.id.iv_home_activity_popupwindow);
 		ll_root = (LinearLayout) findViewById(R.id.ll_home_root);
 		xlv_show = (XListView) findViewById(R.id.lv_home_activity_show);
+		rl_title = (RelativeLayout) findViewById(R.id.rl_home_activity_title);
+
+		
+		rl_menu_login = (RelativeLayout) findViewById(R.id.rl_menu_login);
+		ll_first = (LinearLayout) findViewById(R.id.ll_menu_item_first);
+		tv_psycology = (TextView) findViewById(R.id.tv_menu_item_psycology);
+		tv_usersuggestion = (TextView) findViewById(R.id.tv_menu_item_usersuggestion);
+		tv_movie = (TextView) findViewById(R.id.tv_menu_item_movie);
+		tv_nobored = (TextView) findViewById(R.id.tv_menu_item_nobored);
+		tv_design = (TextView) findViewById(R.id.tv_menu_item_design);
+		tv_bigcorporation = (TextView) findViewById(R.id.tv_menu_item_bigcorporation);
+		tv_finance = (TextView) findViewById(R.id.tv_menu_item_finance);
+		tv_internetsafe = (TextView) findViewById(R.id.tv_menu_item_internetsafe);
+		tv_begingrame = (TextView) findViewById(R.id.tv_menu_item_begingrame);
+		tv_music = (TextView) findViewById(R.id.tv_menu_item_music);
+		tv_cartoon = (TextView) findViewById(R.id.tv_menu_item_cartoon);
+		tv_sport = (TextView) findViewById(R.id.tv_menu_item_sport);
+
 	}
 }

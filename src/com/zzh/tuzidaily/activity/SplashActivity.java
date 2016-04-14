@@ -49,93 +49,93 @@ public class SplashActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		initView();// 初始化界面
 		startAnimation();// 显示动画
-		//initShow();
+		// initShow();
 	}
 
 	/**
 	 * 初始化界面显示
 	 */
-//	private void initShow() {
-//		new Thread() {
-//			public void run() {
-//				long startTime = System.currentTimeMillis();
-//
-//				if (HttpUtils.isNetworkConnected(SplashActivity.this)) {
-//					// 如果网络连接了,获取知乎日报服务器中的Splash加载图片
-//					HttpUtils.get(MyContants.START,
-//							new AsyncHttpResponseHandler() {
-//
-//								// 连接失败
-//								@Override
-//								public void onFailure(int arg0,
-//										org.apache.http.Header[] arg1,
-//										byte[] arg2, Throwable arg3) {
-//								}
-//
-//								@Override
-//								public void onSuccess(int arg0,
-//										org.apache.http.Header[] arg1,
-//										byte[] arg2) {
-//									try {
-//										// 服务器连接成功，就开始Json解析文件的内容
-//										JSONObject jsonObject = new JSONObject(
-//												new String(arg2));
-//
-//										String imageUrl = (String) jsonObject
-//												.get("img");
-//										// 获取图片信息
-//										HttpUtils
-//												.getImage(
-//														imageUrl,
-//														new BinaryHttpResponseHandler() {
-//
-//															@Override
-//															public void onSuccess(
-//																	int arg0,
-//																	org.apache.http.Header[] arg1,
-//																	byte[] arg2) {
-//																// 接收成功，保存图片
-//																saveImage(
-//																		imageFile,
-//																		arg2);
-//															}
-//
-//															@Override
-//															public void onFailure(
-//																	int arg0,
-//																	org.apache.http.Header[] arg1,
-//																	byte[] arg2,
-//																	Throwable arg3) {
-//																// 接收失败，直接回到主机面
-//
-//															}
-//														});
-//									} catch (JSONException e) {
-//										e.printStackTrace();
-//									}
-//								}
-//
-//							});
-//				} else {
-//					// 如果没有网络
-//					ShowToast.showToast(SplashActivity.this, "当前无网络连接", 1);
-//				}
-//
-//				// 判断处理的事件
-//				long endTime = System.currentTimeMillis();
-//				if (endTime - startTime < 3000) {
-//					SystemClock.sleep(3000 - (endTime - startTime));
-//					Message msg = Message.obtain();
-//					msg.what = FINISH;
-//					handler.sendMessage(msg);
-//				} else {
-//					Message msg = Message.obtain();
-//					msg.what = FINISH;
-//					handler.sendMessage(msg);
-//				}
-//			};
-//		}.start();
-//	}
+	// private void initShow() {
+	// new Thread() {
+	// public void run() {
+	// long startTime = System.currentTimeMillis();
+	//
+	// if (HttpUtils.isNetworkConnected(SplashActivity.this)) {
+	// // 如果网络连接了,获取知乎日报服务器中的Splash加载图片
+	// HttpUtils.get(MyContants.START,
+	// new AsyncHttpResponseHandler() {
+	//
+	// // 连接失败
+	// @Override
+	// public void onFailure(int arg0,
+	// org.apache.http.Header[] arg1,
+	// byte[] arg2, Throwable arg3) {
+	// }
+	//
+	// @Override
+	// public void onSuccess(int arg0,
+	// org.apache.http.Header[] arg1,
+	// byte[] arg2) {
+	// try {
+	// // 服务器连接成功，就开始Json解析文件的内容
+	// JSONObject jsonObject = new JSONObject(
+	// new String(arg2));
+	//
+	// String imageUrl = (String) jsonObject
+	// .get("img");
+	// // 获取图片信息
+	// HttpUtils
+	// .getImage(
+	// imageUrl,
+	// new BinaryHttpResponseHandler() {
+	//
+	// @Override
+	// public void onSuccess(
+	// int arg0,
+	// org.apache.http.Header[] arg1,
+	// byte[] arg2) {
+	// // 接收成功，保存图片
+	// saveImage(
+	// imageFile,
+	// arg2);
+	// }
+	//
+	// @Override
+	// public void onFailure(
+	// int arg0,
+	// org.apache.http.Header[] arg1,
+	// byte[] arg2,
+	// Throwable arg3) {
+	// // 接收失败，直接回到主机面
+	//
+	// }
+	// });
+	// } catch (JSONException e) {
+	// e.printStackTrace();
+	// }
+	// }
+	//
+	// });
+	// } else {
+	// // 如果没有网络
+	// ShowToast.showToast(SplashActivity.this, "当前无网络连接", 1);
+	// }
+	//
+	// // 判断处理的事件
+	// long endTime = System.currentTimeMillis();
+	// if (endTime - startTime < 3000) {
+	// SystemClock.sleep(3000 - (endTime - startTime));
+	// Message msg = Message.obtain();
+	// msg.what = FINISH;
+	// handler.sendMessage(msg);
+	// } else {
+	// Message msg = Message.obtain();
+	// msg.what = FINISH;
+	// handler.sendMessage(msg);
+	// }
+	// };
+	// }.start();
+	// }
 
 	private void saveImage(File imageFile, byte[] bytes) {
 		imageFile.delete();
@@ -155,19 +155,19 @@ public class SplashActivity extends Activity {
 
 	}
 
-//	private Handler handler = new Handler() {
-//		public void handleMessage(Message msg) {
-//			switch (msg.what) {
-//			case LOADING:// 去加载数据
-//				break;
-//			case FINISH:// 加载完毕
-//				loadMian();
-//				break;
-//			default:
-//				break;
-//			}
-//		};
-//	};
+	// private Handler handler = new Handler() {
+	// public void handleMessage(Message msg) {
+	// switch (msg.what) {
+	// case LOADING:// 去加载数据
+	// break;
+	// case FINISH:// 加载完毕
+	// loadMian();
+	// break;
+	// default:
+	// break;
+	// }
+	// };
+	// };
 
 	private File imageFile;
 
@@ -203,18 +203,7 @@ public class SplashActivity extends Activity {
 
 			@Override
 			public void onAnimationStart(Animation animation) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void onAnimationRepeat(Animation animation) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void onAnimationEnd(Animation animation) {
+				long startTime = System.currentTimeMillis();
 				// 如果网络可用
 				if (HttpUtils.isNetworkConnected(SplashActivity.this)) {
 					// 从知乎日报服务器中获取开始图片
@@ -228,22 +217,39 @@ public class SplashActivity extends Activity {
 									try {
 										JSONObject jsonObject = new JSONObject(
 												new String(arg2));
-										String imageUrl = jsonObject.getString("img");
-										HttpUtils.getImage(imageUrl, new BinaryHttpResponseHandler() {
-											
-											@Override
-											public void onSuccess(int arg0, Header[] arg1, byte[] arg2) {
-												//保存图片
-												saveImage(imageFile, arg2);
-												loadMian();
-											}
-											
-											@Override
-											public void onFailure(int arg0, Header[] arg1, byte[] arg2, Throwable arg3) {
-												ShowToast.showToast(SplashActivity.this, "图片加载失败", 1);
-												loadMian();
-											}
-										});
+										String imageUrl = jsonObject
+												.getString("img");
+										HttpUtils
+												.getImage(
+														imageUrl,
+														new BinaryHttpResponseHandler() {
+
+															@Override
+															public void onSuccess(
+																	int arg0,
+																	Header[] arg1,
+																	byte[] arg2) {
+																// 保存图片
+																saveImage(
+																		imageFile,
+																		arg2);
+																loadMian();
+															}
+
+															@Override
+															public void onFailure(
+																	int arg0,
+																	Header[] arg1,
+																	byte[] arg2,
+																	Throwable arg3) {
+																ShowToast
+																		.showToast(
+																				SplashActivity.this,
+																				"图片加载失败",
+																				1);
+																loadMian();
+															}
+														});
 									} catch (JSONException e) {
 										// TODO Auto-generated catch block
 										e.printStackTrace();
@@ -254,15 +260,27 @@ public class SplashActivity extends Activity {
 								@Override
 								public void onFailure(int arg0, Header[] arg1,
 										byte[] arg2, Throwable arg3) {
-									ShowToast.showToast(SplashActivity.this, "网络资源获取失败", 1);
-									loadMian();
+									ShowToast.showToast(SplashActivity.this,
+											"网络资源获取失败", 1);
 								}
 							});
 				} else {
 					// 如果网络不可用
 					ShowToast.showToast(SplashActivity.this, "当前网络不可用", 1);
-					loadMian();
+					//loadMian();
 				}
+
+			}
+
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				loadMian();
 			}
 		});
 
