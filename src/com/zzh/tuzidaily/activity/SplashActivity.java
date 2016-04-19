@@ -267,7 +267,7 @@ public class SplashActivity extends Activity {
 				} else {
 					// 如果网络不可用
 					ShowToast.showToast(SplashActivity.this, "当前网络不可用", 1);
-					//loadMian();
+					// loadMian();
 				}
 
 			}

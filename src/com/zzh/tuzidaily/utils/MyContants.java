@@ -10,4 +10,5 @@ public interface MyContants {
 	
 	public static final String BASEURL = "http://news-at.zhihu.com/api/4/";//知乎基本地址
 	public static final String START = "start-image/1080*1776";//开始图片地址
+	public static final String LATESTNEWSURL="news/latest";//最近新闻内容
 }

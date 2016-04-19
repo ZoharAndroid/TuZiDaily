@@ -1,12 +1,26 @@
 package com.zzh.tuzidaily.activity;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,8 +33,14 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.zzh.tuzidaily.R;
 import com.zzh.tuzidaily.SlidingMenu.SlidingMenu;
+import com.zzh.tuzidaily.adapter.NewsListAdapter;
+import com.zzh.tuzidaily.domain.NewsListItem;
+import com.zzh.tuzidaily.domain.StoriesNewsItems;
+import com.zzh.tuzidaily.utils.HttpUtils;
+import com.zzh.tuzidaily.utils.MyContants;
 import com.zzh.tuzidaily.view.XListView;
 import com.zzh.tuzidaily.view.XListView.IXListViewListener;
 
@@ -33,6 +53,8 @@ import com.zzh.tuzidaily.view.XListView.IXListViewListener;
  * 
  */
 public class HomeActivity extends Activity {
+	private static final int FINISH = 1;
+	protected static final int LOADINGFINISH = 2;
 	private ImageView iv_menu;
 	private TextView tv_title;
 	private ImageView iv_login;
@@ -64,22 +86,71 @@ public class HomeActivity extends Activity {
 	private TextView tv_sport;
 	private RelativeLayout rl_title;
 	private LinearLayout ll_first;
+	
+	private List<StoriesNewsItems> news = new ArrayList<StoriesNewsItems>();
+	private NewsListAdapter adapter;;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		initView();
+		getData();//获取网络数据
 		initData();
 		initClickEvent();
 	}
 
+	/**
+	 * 从网络上获取数据，JSON数据解析
+	 */
+	private void getData() {
+		new Thread() {
+			public void run() {
+				try {
+					HttpClient httpClient = new DefaultHttpClient();
+					HttpGet mHttpGet = new HttpGet(MyContants.BASEURL
+							+ MyContants.LATESTNEWSURL);
+					HttpResponse mHttpreResponse = httpClient.execute(mHttpGet);
+					if (mHttpreResponse.getStatusLine().getStatusCode() == 200) {
+						HttpEntity entity = mHttpreResponse.getEntity();
+						String reponse = EntityUtils.toString(entity, "utf-8");
+						parseJSONWithJSONObject(reponse);
+					}
+				} catch (Exception e) {
+					
+				}
+			};
+		}.start();
+		
+		
+	}
+	
+
+	protected void parseJSONWithJSONObject(String reponse) throws JSONException {
+		JSONArray jsonObjects  = new JSONObject(reponse).getJSONArray("stories");
+		for (int i = 0; i < jsonObjects.length(); i++) {
+			JSONObject jsonObject = jsonObjects.getJSONObject(i);
+			StoriesNewsItems item  = new StoriesNewsItems();
+			item.setImages(jsonObject.getString("images"));
+			item.setType(jsonObject.getInt("type"));
+			item.setGa_prefix(jsonObject.getString("ga_prefix"));
+			item.setTitle(jsonObject.getString("title"));
+			item.setId(jsonObject.getInt("id"));
+			news.add(item);
+System.out.println(item.getImages());
+		}
+		
+	}
+ 
 	private void initData() {
+
 		// 获取条目
-		getItems();
+		//getItems();
 		// 设置XListView中的参数
 		xlv_show.setPullLoadEnable(true);
-		mAdapter = new ArrayAdapter<String>(this, R.layout.list_item, items);
-		xlv_show.setAdapter(mAdapter);
+		adapter = new NewsListAdapter(this, news);
+		//mAdapter = new ArrayAdapter<String>(this, R.layout.list_item, items);
+		xlv_show.setAdapter(adapter);
 		mHandler = new Handler();
 		// 设置xlistview的监听效果
 		xlv_show.setXListViewListener(new IXListViewListener() {
@@ -93,12 +164,15 @@ public class HomeActivity extends Activity {
 					@Override
 					public void run() {
 						start = ++refreshCnt;
-						items.clear();
-						getItems();
+						news.clear();
+						//items.clear();
+						//getItems();
+						getData();
 						// mAdapter.notifyDataSetChanged();
-						mAdapter = new ArrayAdapter<String>(HomeActivity.this,
-								R.layout.list_item, items);
-						xlv_show.setAdapter(mAdapter);
+						adapter = new NewsListAdapter(HomeActivity.this, news);
+						//mAdapter = new ArrayAdapter<String>(HomeActivity.this,
+						//		R.layout.list_item, items);
+						xlv_show.setAdapter(adapter);
 						onLoad();
 					}
 				}, 2000);
@@ -113,8 +187,9 @@ public class HomeActivity extends Activity {
 
 					@Override
 					public void run() {
-						getItems();
-						mAdapter.notifyDataSetChanged();
+						//getItems();
+						getData();
+						adapter.notifyDataSetChanged();
 						onLoad();
 					}
 				}, 2000);
@@ -198,12 +273,12 @@ public class HomeActivity extends Activity {
 				startActivity(intent);
 			}
 		});
-		
+
 		/**
 		 * 点击侧滑菜单栏的首页选项
 		 */
 		ll_first.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				setClickMenuTitleToFirst("首页");
@@ -245,6 +320,14 @@ public class HomeActivity extends Activity {
 			}
 		});
 
+		tv_design.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				setClickMenuTitle("设计日报");
+			}
+		});
+		
 		tv_bigcorporation.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -284,7 +367,7 @@ public class HomeActivity extends Activity {
 				setClickMenuTitle("动漫日报");
 			}
 		});
-		
+
 		tv_music.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -292,7 +375,7 @@ public class HomeActivity extends Activity {
 				setClickMenuTitle("音乐日报");
 			}
 		});
-		
+
 		tv_sport.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -312,15 +395,13 @@ public class HomeActivity extends Activity {
 		mSlidingMenu.closeMenu();
 		tv_title.setText(name);
 		iv_login.setVisibility(View.INVISIBLE);
-		//iv_popupwindow.setVisibility(View.GONE);
-		// rl_title.addView(ImageView.inflate(HomeActivity.this,
-		// R.drawable.theme_add, null));
 		iv_popupwindow.setImageResource(R.drawable.theme_add);
 		refreshCnt = 0;
 		start = 0;
-		items.clear();
-		mAdapter.notifyDataSetChanged();
+		news.clear();
+		getData();
 		initData();
+		adapter.notifyDataSetChanged();
 	}
 
 	/**
@@ -333,13 +414,15 @@ public class HomeActivity extends Activity {
 		mSlidingMenu.closeMenu();
 		tv_title.setText(name);
 		iv_login.setVisibility(View.VISIBLE);
-		//iv_popupwindow.setVisibility(View.GONE);
-		iv_popupwindow.setImageResource(R.drawable.abc_ic_menu_moreoverflow_mtrl_alpha);
+		iv_popupwindow
+				.setImageResource(R.drawable.abc_ic_menu_moreoverflow_mtrl_alpha);
 		refreshCnt = 0;
 		start = 0;
-		items.clear();
-		mAdapter.notifyDataSetChanged();
+		news.clear();
+		//items.clear();
+		getData();
 		initData();
+		adapter.notifyDataSetChanged();
 	}
 
 	/**
@@ -450,7 +533,6 @@ public class HomeActivity extends Activity {
 		xlv_show = (XListView) findViewById(R.id.lv_home_activity_show);
 		rl_title = (RelativeLayout) findViewById(R.id.rl_home_activity_title);
 
-		
 		rl_menu_login = (RelativeLayout) findViewById(R.id.rl_menu_login);
 		ll_first = (LinearLayout) findViewById(R.id.ll_menu_item_first);
 		tv_psycology = (TextView) findViewById(R.id.tv_menu_item_psycology);
